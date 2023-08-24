@@ -1,7 +1,11 @@
 package com.example.demo;
 
+import com.example.demo.config.DBConnectionService;
+import com.example.demo.config.mongoDBConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.util.Scanner;
 
@@ -12,7 +16,7 @@ public class PointsOfInterestApplication {
 		Scanner scanner = new Scanner(System.in);
 		int option;
 
-		for(int i=0; i != 4; i++){
+		do{
 			System.out.println("Selecione uma opção:");
 			System.out.println("1. CRIAR ponto de interesse");
 			System.out.println("2. LISTAR TODOS pontos de interesse");
@@ -30,7 +34,9 @@ public class PointsOfInterestApplication {
 					break;
 				case 2:
 					System.out.println("Você escolheu a Opção LISTAR TODOS pontos de interesse.");
-					// Adicione a lógica para a Opção 2 aqui
+					//pointsOfInterestController.getByName("name");
+					pointsOfInterestController.getAll();
+
 					break;
 				case 3:
 					System.out.println("Você escolheu a Opção LISTAR pontos de interesse por proximidade.");
@@ -38,20 +44,21 @@ public class PointsOfInterestApplication {
 					break;
 				case 4:
 					System.out.println("Saindo do menu...");
-					break;
+					System.exit(0);
 				default:
 					System.out.println("Opção inválida. Por favor, escolha novamente.");
 					break;
 			}
 
 			System.out.println(); // linha em branco para separar iterações
-		}
-
-		scanner.close();
+		} while (option != 4);
 	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(PointsOfInterestApplication.class, args);
+
+		System.out.println("connection db: "+ DBConnectionService.checkDatabaseConnection());
+
 		showMenu();
 	}
 }
