@@ -17,10 +17,10 @@ public class pointsOfInterestController
         this.poiRepository = poiRepository;
     }
 
-    @GetMapping("/{name}")
-    public static List<pointsOfInterest> getByName(String name) {
-        return poiRepository.findByName(name);
-    }
+    /*@GetMapping
+    public static List<pointsOfInterest> getByDistance(@RequestParam int x, @RequestParam int y, @RequestParam int dmax) {
+        return poiRepository.findByDistance(x, y, dmax);
+    }*/
 
     @GetMapping
     public static List<pointsOfInterest> getAll(){

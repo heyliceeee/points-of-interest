@@ -34,13 +34,12 @@ public class PointsOfInterestApplication {
 					break;
 				case 2:
 					System.out.println("Você escolheu a Opção LISTAR TODOS pontos de interesse.");
-					//pointsOfInterestController.getByName("name");
-					pointsOfInterestController.getAll();
+					//pointsOfInterestController.getAll();
 
 					break;
 				case 3:
 					System.out.println("Você escolheu a Opção LISTAR pontos de interesse por proximidade.");
-					// Adicione a lógica para a Opção 3 aqui
+					//pointsOfInterestController.getByDistance("name");
 					break;
 				case 4:
 					System.out.println("Saindo do menu...");
@@ -59,6 +58,6 @@ public class PointsOfInterestApplication {
 
 		System.out.println("connection db: "+ DBConnectionService.checkDatabaseConnection());
 
-		showMenu();
+		//showMenu();
 	}
 }
