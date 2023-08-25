@@ -18,10 +18,10 @@ public class pointsOfInterestController
     }
 
     @GetMapping("/distance")
-    public static List<pointsOfInterest> getByDistance(@RequestParam int x, @RequestParam int y, @RequestParam int dmax) {
+    public static List<pointsOfInterest> getByDistance(@RequestParam double x, @RequestParam double y, @RequestParam double dmax) {
 
-        int dxmax = dmax + x;
-        int dymax = dmax + y;
+        double dxmax = dmax + x;
+        double dymax = dmax + y;
 
         return poiRepository.findByDistance(x, y, dxmax, dymax);
     }
@@ -31,7 +31,7 @@ public class pointsOfInterestController
         return poiRepository.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public pointsOfInterest addPoi(@RequestBody pointsOfInterest poi){
         return poiRepository.save(poi);
     }

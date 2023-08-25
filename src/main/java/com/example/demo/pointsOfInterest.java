@@ -9,8 +9,8 @@ public class pointsOfInterest
     @Id
     private String id;
     private String name;
-    private int x;
-    private int y;
+    private double x;
+    private double y;
 
     /* getters & setters */
     public String getId() {
@@ -29,19 +29,19 @@ public class pointsOfInterest
         this.name = name;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 }
