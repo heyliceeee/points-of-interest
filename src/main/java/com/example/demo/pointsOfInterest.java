@@ -2,8 +2,10 @@ package com.example.demo;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.TypeAlias;
 
 @Document(collection = "pointsOfInterest")
+@TypeAlias("pointOfInterest")
 public class pointsOfInterest
 {
     @Id
