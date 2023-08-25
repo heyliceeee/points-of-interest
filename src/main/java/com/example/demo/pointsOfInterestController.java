@@ -17,12 +17,16 @@ public class pointsOfInterestController
         this.poiRepository = poiRepository;
     }
 
-    /*@GetMapping
+    @GetMapping("/distance")
     public static List<pointsOfInterest> getByDistance(@RequestParam int x, @RequestParam int y, @RequestParam int dmax) {
-        return poiRepository.findByDistance(x, y, dmax);
-    }*/
 
-    @GetMapping
+        int dxmax = dmax + x;
+        int dymax = dmax + y;
+
+        return poiRepository.findByDistance(x, y, dxmax, dymax);
+    }
+
+    @GetMapping("/all")
     public static List<pointsOfInterest> getAll(){
         return poiRepository.findAll();
     }
