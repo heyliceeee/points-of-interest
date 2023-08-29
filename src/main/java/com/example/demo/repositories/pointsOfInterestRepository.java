@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface pointsOfInterestRepository extends MongoRepository<pointsOfInterest, String>
 {
-    @Query("{ $or: [ { 'x': { $gte: ?0, $lte: ?2 } }, { 'y': { $gte: ?1, $lte: ?3 } } ] }")
-    List<pointsOfInterest> findByDistance(double x, double y, double dxmax, double dymax);
+    //@Query("{ $and: [ { 'x': { $gte: ?0, $lte: ?2 } }, { 'y': { $gte: ?1, $lte: ?3 } } ] }")
+    //List<pointsOfInterest> findByDistance(double dxmin, double dymin, double dxmax, double dymax);
     //List<pointsOfInterest> findByName(String name);
 }

@@ -4,6 +4,7 @@ import com.example.demo.repositories.pointsOfInterestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,11 +20,22 @@ public class pointsOfInterestController
 
     @GetMapping("/distance")
     public static List<pointsOfInterest> getByDistance(@RequestParam double x, @RequestParam double y, @RequestParam double dmax) {
+        List<String> listIDs = null;
 
-        double dxmax = dmax + x;
-        double dymax = dmax + y;
+        //verificar a poi
+        for(int i=0; i < poiRepository.findAll().size(); i++){
 
-        return poiRepository.findByDistance(x, y, dxmax, dymax);
+            double poiX = poiRepository.findAll().get(i).getX();
+            double poiY = poiRepository.findAll().get(i).getY();
+
+            double distance = Math.sqrt(Math.pow((poiX - x), 2) + Math.pow((poiY - y), 2));
+
+            if(distance <= dmax){ //se o poi esta na area
+                String poiID = poiRepository.findAll().get(i).getId();
+                listIDs.add(poiID);
+            }
+        }
+        return poiRepository.findAllById(listIDs);
     }
 
     @GetMapping("/all")
