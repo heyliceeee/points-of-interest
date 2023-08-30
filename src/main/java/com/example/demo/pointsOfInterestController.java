@@ -20,7 +20,7 @@ public class pointsOfInterestController
 
     @GetMapping("/distance")
     public static List<pointsOfInterest> getByDistance(@RequestParam double x, @RequestParam double y, @RequestParam double dmax) {
-        List<String> listIDs = null;
+        List<String> listIDs = new ArrayList<>();
 
         //verificar a poi
         for(int i=0; i < poiRepository.findAll().size(); i++){
@@ -35,6 +35,12 @@ public class pointsOfInterestController
                 listIDs.add(poiID);
             }
         }
+
+        if(listIDs.isEmpty()){
+
+            listIDs.add("Vazio");
+        }
+
         return poiRepository.findAllById(listIDs);
     }
 
